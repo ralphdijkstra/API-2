@@ -1,0 +1,28 @@
+# Laravel specific
+thetrailersapi/.env
+thetrailersapi/.env.*
+thetrailersapi/vendor/
+thetrailersapi/node_modules/
+thetrailersapi/public/storage/
+thetrailersapi/public/hot/
+thetrailersapi/public/.htaccess
+thetrailersapi/storage/*.key
+thetrailersapi/storage/debugbar/
+thetrailersapi/Homestead.json
+thetrailersapi/Homestead.yaml
+thetrailersapi/npm-debug.log*
+thetrailersapi/yarn-error.log*
+thetrailersapi/yarn.lock
+
+# IDE / Editor specific
+thetrailersapi/.idea
+thetrailersapi/.phpstorm.meta.php
+thetrailersapi/.phpstorm.meta.php.tmp
+thetrailersapi/.phpstorm.meta.php.sandbox
+thetrailersapi/.vscode
+thetrailersapi/*.sublime-project
+thetrailersapi/*.sublime-workspace
+
+# OS generated files
+thetrailersapi/.DS_Store
+thetrailersapi/Thumbs.db
