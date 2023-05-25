@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
-    protected $fillable = ['title', 'year'];
+    protected $fillable = ['title', 'year', 'poster_url'];
 
     public function trailers()
     {

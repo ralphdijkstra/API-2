@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->integer('year');
+            $table->string('poster_url');
             $table->timestamps();
         });
     }
