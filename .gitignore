@@ -1,6 +1,5 @@
 # Laravel specific
 thetrailersapi/.env
-thetrailersapi/.env.*
 thetrailersapi/vendor/
 thetrailersapi/node_modules/
 thetrailersapi/public/storage/
