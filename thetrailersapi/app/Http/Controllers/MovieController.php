@@ -47,6 +47,6 @@ class MovieController extends Controller
     {
         $movie = Movie::findOrFail($id);
         $movie->delete();
-        return response()->json('Movie deleted successfully.', 204);
+        return response()->json('Movie deleted successfully.', 200);
     }
 }
