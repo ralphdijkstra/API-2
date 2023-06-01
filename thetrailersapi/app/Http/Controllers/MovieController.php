@@ -66,7 +66,7 @@ class MovieController extends Controller
 
         $movie = Movie::findOrFail($id);
 
-        $data = $request->only(['naam', 'functie_id', 'telefoon', 'email', 'sinds']);
+        $data = $request->only(['title', 'year']);
 
         $content = [
             'success' => $movie->update($request->all()),
