@@ -4,6 +4,7 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\TrailerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthenticationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +17,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/register', [AuthenticationController::class, 'register']);
+Route::post('/login', [AuthenticationController::class, 'login']);
+Route::post('/logout', [AuthenticationController::class, 'logout']);
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('profile', function (Request $request) {
+        return auth()->user();
+    });
+
+    Route::apiResource('movies', MovieController::class)->except(['index', 'show']);
+});
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('movies', MovieController::class);
+Route::apiResource('movies', MovieController::class)->only(['index', 'show']);
 Route::get('movies/{movie}/trailers', [MovieController::class, 'trailers']);
 
-Route::resource('trailers', TrailerController::class);
+Route::apiResource('trailers', TrailerController::class);

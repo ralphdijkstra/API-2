@@ -11,12 +11,12 @@ class TrailerSeeder extends Seeder
     {
         Trailer::create([
             'title' => 'Official Trailer',
-            'url' => 'https://www.youtube.com/watch?v=32RAq6JzY-w',
+            'url' => '32RAq6JzY-w',
             'movie_id' => '1'
         ]);
         Trailer::create([
             'title' => 'Main Trailer',
-            'url' => 'https://www.youtube.com/watch?v=32RAq6JzY-w',
+            'url' => '32RAq6JzY-w',
             'movie_id' => '1'
         ]);
     }
