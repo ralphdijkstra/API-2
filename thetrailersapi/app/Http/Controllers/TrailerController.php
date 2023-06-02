@@ -15,8 +15,17 @@ class TrailerController extends Controller
 
     public function store(Request $request)
     {
-        $trailer = Trailer::create($request->all());
-        return response()->json($trailer, 201);
+        $request->user()->currentAccessToken()->delete();
+
+        $data = Trailer::create($request->all());
+
+        $content = [
+            'success' => true,
+            'data'    => $data,
+            'access_token' => auth()->user()->createToken('API Token')->plainTextToken,
+            'token_type' => 'Bearer',
+        ];
+        return response()->json($content, 201);
     }
 
     public function show($id)

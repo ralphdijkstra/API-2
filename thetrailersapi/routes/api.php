@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     });
 
     Route::apiResource('movies', MovieController::class)->except(['index', 'show']);
+    Route::apiResource('trailers', TrailerController::class)->except(['index', 'show']);
 });
 
 
@@ -37,4 +38,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('movies', MovieController::class)->only(['index', 'show']);
 Route::get('movies/{movie}/trailers', [MovieController::class, 'trailers']);
 
-Route::apiResource('trailers', TrailerController::class);
+Route::apiResource('trailers', TrailerController::class)->only(['index', 'show']);

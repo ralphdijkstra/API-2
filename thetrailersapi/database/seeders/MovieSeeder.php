@@ -18,11 +18,15 @@ class MovieSeeder extends Seeder
 
         $moviesData = [
             [
-                'title' => 'Guardians of the Galaxy vol. 3',
+                'title' => 'Fast X',
                 'year' => '2023',
             ],
             [
                 'title' => 'Spider-Man: Across the Spider-Verse',
+                'year' => '2023',
+            ],
+            [
+                'title' => 'The Flash',
                 'year' => '2023',
             ],
         ];
