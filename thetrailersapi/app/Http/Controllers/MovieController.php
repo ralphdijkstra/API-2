@@ -75,11 +75,6 @@ class MovieController extends Controller
             'token_type' => 'Bearer',
         ];
         return response()->json($content, 200);
-
-        $movie = Movie::findOrFail($id);
-        $movie->update($request->all());
-        $movie->load('trailers');
-        return response()->json($movie, 200);
     }
 
     public function destroy(Request $request, $id)

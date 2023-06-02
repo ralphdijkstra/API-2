@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTrailerRequest;
+use App\Http\Requests\UpdateTrailerRequest;
 use Illuminate\Http\Request;
 use App\Models\Trailer;
 
@@ -13,7 +15,7 @@ class TrailerController extends Controller
         return response()->json($trailers);
     }
 
-    public function store(Request $request)
+    public function store(StoreTrailerRequest $request)
     {
         $request->user()->currentAccessToken()->delete();
 
@@ -34,17 +36,37 @@ class TrailerController extends Controller
         return response()->json($trailer);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateTrailerRequest $request, $id)
     {
+        $request->user()->currentAccessToken()->delete();
+
         $trailer = Trailer::findOrFail($id);
-        $trailer->update($request->all());
-        return response()->json($trailer);
+
+        $data = $request->only(['title', 'year']);
+
+        $content = [
+            'success' => $trailer->update($request->all()),
+            'data'    => $data,
+            'access_token' => auth()->user()->createToken('API Token')->plainTextToken,
+            'token_type' => 'Bearer',
+        ];
+        return response()->json($content, 200);
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        $request->user()->currentAccessToken()->delete();
+
         $trailer = Trailer::findOrFail($id);
+
         $trailer->delete();
-        return response()->json(null, 200);
+
+        $content = [
+            'success' => true,
+            'data'    => $trailer,
+            'access_token' => auth()->user()->createToken('API Token')->plainTextToken,
+            'token_type' => 'Bearer',
+        ];
+        return response()->json($content, 202);
     }
 }
